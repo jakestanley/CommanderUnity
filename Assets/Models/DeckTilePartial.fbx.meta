@@ -1,0 +1,142 @@
+fileFormatVersion: 2
+guid: 7a22c9657af50b74d9ffc256d0a3871d
+timeCreated: 1451477616
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Base
+    100002: Camera
+    100004: //RootNode
+    100006: EastPillar
+    100008: Lamp
+    100010: NorthEastDoorA
+    100012: NorthEastDoorB
+    100014: NorthEastWall
+    100016: NorthEastWallDoor
+    100018: NorthPillar
+    100020: NorthWestDoorA
+    100022: NorthWestDoorB
+    100024: NorthWestWall
+    100026: NorthWestWallDoor
+    100028: SouthPillar
+    100030: WestPillar
+    400000: Base
+    400002: Camera
+    400004: //RootNode
+    400006: EastPillar
+    400008: Lamp
+    400010: NorthEastDoorA
+    400012: NorthEastDoorB
+    400014: NorthEastWall
+    400016: NorthEastWallDoor
+    400018: NorthPillar
+    400020: NorthWestDoorA
+    400022: NorthWestDoorB
+    400024: NorthWestWall
+    400026: NorthWestWallDoor
+    400028: SouthPillar
+    400030: WestPillar
+    2300000: Base
+    2300002: EastPillar
+    2300004: NorthEastDoorA
+    2300006: NorthEastDoorB
+    2300008: NorthEastWall
+    2300010: NorthEastWallDoor
+    2300012: NorthPillar
+    2300014: NorthWestDoorA
+    2300016: NorthWestDoorB
+    2300018: NorthWestWall
+    2300020: NorthWestWallDoor
+    2300022: SouthPillar
+    2300024: WestPillar
+    3300000: Base
+    3300002: EastPillar
+    3300004: NorthEastDoorA
+    3300006: NorthEastDoorB
+    3300008: NorthEastWall
+    3300010: NorthEastWallDoor
+    3300012: NorthPillar
+    3300014: NorthWestDoorA
+    3300016: NorthWestDoorB
+    3300018: NorthWestWall
+    3300020: NorthWestWallDoor
+    3300022: SouthPillar
+    3300024: WestPillar
+    4300000: NorthEastDoorB
+    4300002: NorthEastWallDoor
+    4300004: NorthEastDoorA
+    4300006: NorthWestWallDoor
+    4300008: NorthWestDoorB
+    4300010: NorthWestDoorA
+    4300012: NorthWestWall
+    4300014: NorthEastWall
+    4300016: EastPillar
+    4300018: Base
+    4300020: NorthPillar
+    4300022: SouthPillar
+    4300024: WestPillar
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

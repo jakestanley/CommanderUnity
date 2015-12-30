@@ -8,7 +8,7 @@ public class CameraBehaviour : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        camera = GameObject.Find("Main Camera");
+        camera = GameObject.Find("Main Camera"); // TODO use tags
         speed = BASE_SPEED;
 	}
 	
