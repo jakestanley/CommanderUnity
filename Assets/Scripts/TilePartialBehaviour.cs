@@ -120,7 +120,7 @@ public class TilePartialBehaviour : MonoBehaviour {
 
         }
 
-        updateVisibility();
+        updateConstraints();
 
     }
 
@@ -178,17 +178,38 @@ public class TilePartialBehaviour : MonoBehaviour {
         return (distance < DOOR_PROXIMITY_MAX_DISTANCE);
     }
 
-    public void updateVisibility() {
+    public void updateConstraints() {
 
         // hide pillars initially
-        tileObject.transform.Find("NorthPillar").GetComponent<Renderer>().enabled = false;
-        tileObject.transform.Find("EastPillar").GetComponent<Renderer>().enabled = false;
-        tileObject.transform.Find("WestPillar").GetComponent<Renderer>().enabled = false;
-        tileObject.transform.Find("SouthPillar").GetComponent<Renderer>().enabled = false;
+        tileObject.transform.Find("Base").GetComponent<Renderer>().enabled = false;
+
+        Transform northPillarTransform = tileObject.transform.Find("NorthPillar");
+        Transform eastPillarTransform = tileObject.transform.Find("EastPillar");
+        Transform westPillarTransform = tileObject.transform.Find("WestPillar");
+        Transform southPillarTransform = tileObject.transform.Find("SouthPillar");
+
+        northPillarTransform.GetComponent<Renderer>().enabled = false;
+        eastPillarTransform.GetComponent<Renderer>().enabled = false;
+        westPillarTransform.GetComponent<Renderer>().enabled = false;
+        southPillarTransform.GetComponent<Renderer>().enabled = false;
         
-        // disable initial collision detection    
-        tileObject.transform.Find("NorthEastWall").GetComponent<Collider>().enabled = false;
-        tileObject.transform.Find("NorthWestWall").GetComponent<Collider>().enabled = false;
+        // disable initial collision detection
+        northPillarTransform.GetComponent<NavMeshObstacle>().enabled = false;
+        eastPillarTransform.GetComponent<NavMeshObstacle>().enabled = false;
+        westPillarTransform.GetComponent<NavMeshObstacle>().enabled = false;
+        southPillarTransform.GetComponent<NavMeshObstacle>().enabled = false;
+
+        // northPillarTransform.GetComponent<Collider>().enabled = false;
+        // eastPillarTransform.GetComponent<Collider>().enabled = false;
+        // westPillarTransform.GetComponent<Collider>().enabled = false;
+        // southPillarTransform.GetComponent<Collider>().enabled = false;
+
+        Transform northEastWallTransform = tileObject.transform.Find("NorthEastWall");
+        Transform northWestWallTransform = tileObject.transform.Find("NorthWestWall");
+        northEastWallTransform.GetComponent<Collider>().enabled = false;
+        northEastWallTransform.GetComponent<NavMeshObstacle>().enabled = false;
+        northWestWallTransform.GetComponent<Collider>().enabled = false;
+        northWestWallTransform.GetComponent<NavMeshObstacle>().enabled = false;
 
         if (isVoid) {
             tileObject.transform.Find("NorthEastWall").GetComponent<Renderer>().enabled = false; // TODO make references to these variables to reduce code?
@@ -200,19 +221,25 @@ public class TilePartialBehaviour : MonoBehaviour {
             tileObject.transform.Find("NorthWestWallDoor").GetComponent<Renderer>().enabled = false;
             tileObject.transform.Find("NorthWestDoorA").GetComponent<Renderer>().enabled = false;
             tileObject.transform.Find("NorthWestDoorB").GetComponent<Renderer>().enabled = false;
-            tileObject.transform.Find("Base").GetComponent<Renderer>().enabled = false;
             return;
         } else {
-            tileObject.transform.Find("Base").GetComponent<Renderer>().enabled = true;
+            // tileObject.transform.Find("Base").GetComponent<Renderer>().enabled = true; // TODO restore at some point
         }
+
+        // disable wall renderers to begin with
+        tileObject.transform.Find("NorthEastWall").GetComponent<Renderer>().enabled = false; // TODO make references to these variables to reduce code?
+        tileObject.transform.Find("NorthEastWallDoor").GetComponent<Renderer>().enabled = false;
+        tileObject.transform.Find("NorthEastDoorA").GetComponent<Renderer>().enabled = false;
+        tileObject.transform.Find("NorthEastDoorB").GetComponent<Renderer>().enabled = false;
+
+        tileObject.transform.Find("NorthWestWall").GetComponent<Renderer>().enabled = false; // TODO make references to these variables to reduce code?
+        tileObject.transform.Find("NorthWestWallDoor").GetComponent<Renderer>().enabled = false;
+        tileObject.transform.Find("NorthWestDoorA").GetComponent<Renderer>().enabled = false;
+        tileObject.transform.Find("NorthWestDoorB").GetComponent<Renderer>().enabled = false;
 
         // northeast wall
         switch (northEastWall) {
             case BLANK:
-                tileObject.transform.Find("NorthEastWall").GetComponent<Renderer>().enabled = false; // TODO make references to these variables to reduce code?
-                tileObject.transform.Find("NorthEastWallDoor").GetComponent<Renderer>().enabled = false;
-                tileObject.transform.Find("NorthEastDoorA").GetComponent<Renderer>().enabled = false;
-                tileObject.transform.Find("NorthEastDoorB").GetComponent<Renderer>().enabled = false;
                 break;
             case WALL:
                 tileObject.transform.Find("NorthPillar").GetComponent<Renderer>().enabled = true;
@@ -221,24 +248,38 @@ public class TilePartialBehaviour : MonoBehaviour {
                 tileObject.transform.Find("NorthEastWallDoor").GetComponent<Renderer>().enabled = false;
                 tileObject.transform.Find("NorthEastDoorA").GetComponent<Renderer>().enabled = false;
                 tileObject.transform.Find("NorthEastDoorB").GetComponent<Renderer>().enabled = false;
+
+                // tileObject.transform.Find("NorthPillar").GetComponent<Collider>().enabled = true;
+                // tileObject.transform.Find("EastPillar").GetComponent<Collider>().enabled = true;
+                tileObject.transform.Find("NorthEastWall").GetComponent<Collider>().enabled = true;
+
+                // enable north east wall nav mesh agent collision
+                northEastWallTransform.GetComponent<NavMeshObstacle>().enabled = true;
+                tileObject.transform.Find("NorthPillar").GetComponent<NavMeshObstacle>().enabled = true;
+                tileObject.transform.Find("EastPillar").GetComponent<NavMeshObstacle>().enabled = true;
+
+                // tileObject.transform.Find("NorthPillar").GetComponent<Collider>().enabled = true;
+                // tileObject.transform.Find("EastPillar").GetComponent<Collider>().enabled = true;
                 break;
             case DOOR:
                 tileObject.transform.Find("NorthPillar").GetComponent<Renderer>().enabled = true;
                 tileObject.transform.Find("EastPillar").GetComponent<Renderer>().enabled = true;
                 tileObject.transform.Find("NorthEastWall").GetComponent<Renderer>().enabled = false;
-                tileObject.transform.Find("NorthEastWallDoor").GetComponent<Renderer>().enabled = true;
-                tileObject.transform.Find("NorthEastDoorA").GetComponent<Renderer>().enabled = true;
-                tileObject.transform.Find("NorthEastDoorB").GetComponent<Renderer>().enabled = true;
+                // tileObject.transform.Find("NorthEastWallDoor").GetComponent<Renderer>().enabled = true;
+                // tileObject.transform.Find("NorthEastDoorA").GetComponent<Renderer>().enabled = true;
+                // tileObject.transform.Find("NorthEastDoorB").GetComponent<Renderer>().enabled = true;
+
+                tileObject.transform.Find("NorthPillar").GetComponent<NavMeshObstacle>().enabled = true;
+                tileObject.transform.Find("EastPillar").GetComponent<NavMeshObstacle>().enabled = true;
+
+                // tileObject.transform.Find("NorthPillar").GetComponent<Collider>().enabled = true; // TODO change to use stored variable from above
+                // tileObject.transform.Find("EastPillar").GetComponent<Collider>().enabled = true;
                 break;
         }
 
         // northwest wall
         switch (northWestWall) {
             case BLANK:
-                tileObject.transform.Find("NorthWestWall").GetComponent<Renderer>().enabled = false; // TODO make references to these variables to reduce code?
-                tileObject.transform.Find("NorthWestWallDoor").GetComponent<Renderer>().enabled = false;
-                tileObject.transform.Find("NorthWestDoorA").GetComponent<Renderer>().enabled = false;
-                tileObject.transform.Find("NorthWestDoorB").GetComponent<Renderer>().enabled = false;
                 break;
             case WALL:
                 tileObject.transform.Find("NorthPillar").GetComponent<Renderer>().enabled = true;
@@ -247,14 +288,32 @@ public class TilePartialBehaviour : MonoBehaviour {
                 tileObject.transform.Find("NorthWestWallDoor").GetComponent<Renderer>().enabled = false;
                 tileObject.transform.Find("NorthWestDoorA").GetComponent<Renderer>().enabled = false;
                 tileObject.transform.Find("NorthWestDoorB").GetComponent<Renderer>().enabled = false;
+
+                // tileObject.transform.Find("NorthPillar").GetComponent<Collider>().enabled = true;
+                // tileObject.transform.Find("WestPillar").GetComponent<Collider>().enabled = true;
+                tileObject.transform.Find("NorthWestWall").GetComponent<Collider>().enabled = true;
+
+                // enable north west wall nav mesh agent collision
+                northWestWallTransform.GetComponent<NavMeshObstacle>().enabled = true;
+                tileObject.transform.Find("NorthPillar").GetComponent<NavMeshObstacle>().enabled = true;
+                tileObject.transform.Find("WestPillar").GetComponent<NavMeshObstacle>().enabled = true;
+
+                // tileObject.transform.Find("NorthPillar").GetComponent<Collider>().enabled = true;
+                // tileObject.transform.Find("WestPillar").GetComponent<Collider>().enabled = true;
                 break;
             case DOOR:
                 tileObject.transform.Find("NorthPillar").GetComponent<Renderer>().enabled = true;
                 tileObject.transform.Find("WestPillar").GetComponent<Renderer>().enabled = true;
                 tileObject.transform.Find("NorthWestWall").GetComponent<Renderer>().enabled = false;
-                tileObject.transform.Find("NorthWestWallDoor").GetComponent<Renderer>().enabled = true;
-                tileObject.transform.Find("NorthWestDoorA").GetComponent<Renderer>().enabled = true;
-                tileObject.transform.Find("NorthWestDoorB").GetComponent<Renderer>().enabled = true;
+                // tileObject.transform.Find("NorthWestWallDoor").GetComponent<Renderer>().enabled = true;
+                // tileObject.transform.Find("NorthWestDoorA").GetComponent<Renderer>().enabled = true;
+                // tileObject.transform.Find("NorthWestDoorB").GetComponent<Renderer>().enabled = true;
+
+                tileObject.transform.Find("NorthPillar").GetComponent<NavMeshObstacle>().enabled = true;
+                tileObject.transform.Find("WestPillar").GetComponent<NavMeshObstacle>().enabled = true;
+
+                // tileObject.transform.Find("NorthPillar").GetComponent<Collider>().enabled = true;
+                // tileObject.transform.Find("WestPillar").GetComponent<Collider>().enabled = true;
                 break;
         }
 
