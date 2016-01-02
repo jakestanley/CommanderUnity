@@ -82,11 +82,11 @@ public class LandingGearBehaviour : MonoBehaviour {
         // gearObject.transform.Find("UpperLeg").position = new Vector3();
     }
 
-    public float GEAR_SPEED = 4f;
+    public const float GEAR_SPEED = 4f;
 
-    public float MIDDLE_LEG_RETRACTED_MAX_Y_OFFSET  = 3.2f;
-    public float LOWER_LEG_RETRACTED_MAX_Y_OFFSET   = 6f;
-    public float FOOT_RETRACTED_MAX_Y_OFFSET        = 6f;
+    public const float MIDDLE_LEG_RETRACTED_MAX_Y_OFFSET  = 3.2f;
+    public const float LOWER_LEG_RETRACTED_MAX_Y_OFFSET   = 6f;
+    public const float FOOT_RETRACTED_MAX_Y_OFFSET        = 6f;
 
     public const int RETRACTED = 0;
     public const int DEPLOYED = 1;
