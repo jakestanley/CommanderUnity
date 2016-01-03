@@ -182,7 +182,8 @@ public class TilePartialBehaviour : MonoBehaviour {
 
         // hide pillars initially
         // tileObject.transform.Find("Base").GetComponent<Renderer>().enabled = false;
-
+        tileObject.transform.Find("WestPillar").GetComponent<Renderer>().enabled = false;
+        tileObject.transform.Find("EastPillar").GetComponent<Renderer>().enabled = false;
 
         
         // disable initial collision detection
@@ -226,6 +227,7 @@ public class TilePartialBehaviour : MonoBehaviour {
                 tileObject.transform.Find("NorthEastWallDoor").GetComponent<Renderer>().enabled = true;
                 tileObject.transform.Find("NorthEastDoorA").GetComponent<Renderer>().enabled = true;
                 tileObject.transform.Find("NorthEastDoorB").GetComponent<Renderer>().enabled = true;
+                tileObject.transform.Find("EastPillar").GetComponent<Renderer>().enabled = true;
 
 
                 break;
@@ -247,6 +249,7 @@ public class TilePartialBehaviour : MonoBehaviour {
                 tileObject.transform.Find("NorthWestWallDoor").GetComponent<Renderer>().enabled = true;
                 tileObject.transform.Find("NorthWestDoorA").GetComponent<Renderer>().enabled = true;
                 tileObject.transform.Find("NorthWestDoorB").GetComponent<Renderer>().enabled = true;
+                tileObject.transform.Find("WestPillar").GetComponent<Renderer>().enabled = true;
 
 
                 break;

@@ -9,6 +9,7 @@ public class CharacterMove : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         agent = GetComponent<NavMeshAgent>();
+        // agent.updateRotation = false;
         // goal = new Vector3(13,0,24);
     }
     
