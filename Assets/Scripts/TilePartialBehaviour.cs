@@ -181,7 +181,7 @@ public class TilePartialBehaviour : MonoBehaviour {
     public void updateConstraints() {
 
         // hide pillars initially
-        tileObject.transform.Find("Base").GetComponent<Renderer>().enabled = false;
+        // tileObject.transform.Find("Base").GetComponent<Renderer>().enabled = false;
 
 
         

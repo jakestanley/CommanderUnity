@@ -9,11 +9,11 @@ public class CharacterMove : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         agent = GetComponent<NavMeshAgent>();
-        goal = new Vector3(13,0,24);
-	   agent.SetDestination(goal);
+        // goal = new Vector3(13,0,24);
     }
     
     // Update is called once per frame
     void Update () {
+        agent.SetDestination(goal);
 	}
 }
